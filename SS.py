@@ -3,12 +3,25 @@ import os
 # import yaml
 import json
 from colorama import Fore
+import platform
+
 art = """ 
  ___  ____  ____  __  __  ____    ___  _   _  ____  ____  ____ 
 / __)( ___)(_  _)(  )(  )(  _ \  / __)( )_( )(_  _)( ___)(_  _)
 \__ \ )__)   )(   )(__)(  )___/  \__ \ ) _ (  _)(_  )__)   )(  
 (___/(____) (__) (______)(__)    (___/(_) (_)(____)(__)   (__) 
 """
+
+def detectOs():
+  system_name = platform.system()
+  if system_name == "Linux":
+    return "Linux"
+  elif system_name == "Darwin":
+    return "Macos" 
+  elif system_name == "Windows":
+    return "Windows"
+  else:
+    return None 
 
 
 def valid_input():
@@ -21,8 +34,8 @@ def valid_input():
     return option
 
 
-def installer(config):
-    packages = config['packages']
+def installer(config,OS):
+    packages = config[OS]
     i = 1
     for p in packages:
         print('[', i, ']', p[0], '\n')
@@ -35,18 +48,18 @@ def installer(config):
     return None
 
 
-def add(config):
+def add(config,OS):
     print(Fore.YELLOW + "What's the name of the automated command: ")
     pack_name = str(input(':$ '))
     print(Fore.YELLOW + "What's the command to run the command: ")
     pack_com = str(input(':$ '))
     pack = [pack_name, pack_com]
-    config['packages'].append(pack)
+    config[OS].append(pack)
     return config
 
 
-def remove(config):
-    packages = config['packages']
+def remove(config,OS):
+    packages = config[OS]
     i = 1
     for p in packages:
         print('[', i, ']', p[0], '\n')
@@ -59,7 +72,7 @@ def remove(config):
     confirm = str(input(':$ ')).upper().replace(" ", "")
 
     if confirm == "YES" or confirm == "Y" and option in range(1, len(packages)+1):
-        config['packages'].pop(option-1)
+        packages.pop(option-1)
     elif (confirm == "NO" or confirm == "N"):
         print(Fore.YELLOW + "\nBack to the main menu\n")
     else:
@@ -70,28 +83,30 @@ def remove(config):
 def main():
     with open('config.json', 'r') as file:
         config = json.load(file)
+    with open('config.json', 'w') as file:
+        json.dump(config, file)
     while True:
-        with open('config.json', 'w') as file:
-            json.dump(config, file)
-
         print(art)
         print(
             Fore.CYAN + "[!] The idea by: @elfalehdev and shoutout to @cryptolake for the update.\n")
         print(
             Fore.RED + "[1] Install packages \n[2] Add a package to the config\n[3] Remove a package from the config\n[4] Exit")
+        OS=detectOs()
         option = valid_input()
-
+        if not OS:
+            print(Fore.BLACK+"[!!] Unknown or Unsupported operating system !")
         if (option == 1):
-            installer(config)
+            installer(config,OS)
         elif (option == 2):
-            config = add(config)
+            config = add(config,OS)
         elif (option == 3):
-            config = remove(config)
+            config = remove(config,OS)
         elif (option == 4):
             exit()
         else:
             print('Please choose an appropriate option.\n')
-
+              
 
 if __name__ == '__main__':
     main()
+
