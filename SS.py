@@ -72,7 +72,7 @@ def remove(config,OS):
     confirm = str(input(':$ ')).upper().replace(" ", "")
 
     if confirm == "YES" or confirm == "Y" and option in range(1, len(packages)+1):
-        packages.pop(option-1)
+        config[OS].pop(option-1)
     elif (confirm == "NO" or confirm == "N"):
         print(Fore.YELLOW + "\nBack to the main menu\n")
     else:
@@ -86,6 +86,9 @@ def main():
     with open('config.json', 'w') as file:
         json.dump(config, file)
     OS=detectOs()
+    if not OS:
+        print(Fore.BLACK+"[!!] Unknown or Unsupported operating system !")
+        exit()
     while True:
         print(art)
         print(
@@ -93,8 +96,6 @@ def main():
         print(
             Fore.RED + "[1] Install packages \n[2] Add a package to the config\n[3] Remove a package from the config\n[4] Exit")       
         option = valid_input()
-        if not OS:
-            print(Fore.BLACK+"[!!] Unknown or Unsupported operating system !")
         if (option == 1):
             installer(config,OS)
         elif (option == 2):
