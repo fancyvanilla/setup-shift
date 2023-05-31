@@ -1,6 +1,6 @@
 ![setup shift banner](https://github.com/elfalehed/setup-shift/blob/main/wesbite/public/Setup%20Shift.png)
 
-When you change your setup, buy a new one or whatever it is hard to re:install all of the previous packages and programs you used to have. Now, you haee <a href="https://github.com/elfalehed/setup-shift">Setup Shift</a> 
+When you change your setup, buy a new one or whatever it is hard to re:install all of the previous packages and programs you used to have. Now, you have <a href="https://github.com/elfalehed/setup-shift">Setup Shift</a> for that  
 
 ## Features
 * Autodownload your current setup on a new machine 
