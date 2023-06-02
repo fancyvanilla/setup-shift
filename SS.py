@@ -92,7 +92,7 @@ def main():
     while True:
         print(art)
         print(
-            Fore.CYAN + "[!] The idea by: @elfalehdev and shoutout to @cryptolake for the update.\n")
+            Fore.CYAN + "[!] Don't forget to give us a star on GitHub.\n")
         print(
             Fore.RED + "[1] Install packages \n[2] Add a package to the config\n[3] Remove a package from the config\n[4] Exit")       
         option = valid_input()

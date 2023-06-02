@@ -1,16 +1,11 @@
-# :crystal_ball: setup_shift(SS.py) 
-switching computer? changing your setup? You need to automate the download of your current setup?  This is the right tool for you :incoming_envelope:
+![setup shift banner](https://github.com/elfalehed/setup-shift/blob/main/wesbite/public/Setup%20Shift.png)
 
-## :interrobang: The idea 
-A simple idea of a script that has all of the needed download links & commands for your current setup of IDEs, text editors to your chrome extensions.
+When you change your setup, buy a new one or whatever it is hard to re:install all of the previous packages and programs you used to have. Now, you have <a href="https://github.com/elfalehed/setup-shift">Setup Shift</a> for that  
 
-## :arrow_forward: Getting started 
-:warning: Make sure python3 is installed. And you're on Linux - Its not compatible with Windows yet.
+## Features
+* Autodownload your current setup on a new machine 
+* Add a configlist of the current packages to have it on you at ALL time (in case of emergency and you had to format everything) 
 
-EASY JUST RUN: 
-
-0. ``` git clone https://www.github.com/elfalehdev/setup_shift.git```
-1. ``` python3 SS.py```
-
-## :wrench: Editing The Script
-After running the script you'll have the options either to add more packages or to install the ones on the config file. 
+## Quick start 
+1. <code>git clone https://github.com/elfalehed/setup-shift.git</code>
+2. <code>python3 SS.py</code>
